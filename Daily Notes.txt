@@ -1,0 +1,482 @@
+ 15/9/2020 
+ 
+ Sample FreeAPI Calls
+ 
+There are following public apis
+#	Route	Method	Type	Full route	Description	Details
+1	/employee	GET	JSON	http://dummy.restapiexample.com/api/v1/employees	Get all employee data	Details
+2	/employee/{id}	GET	JSON	http://dummy.restapiexample.com/api/v1/employee/1	Get a single employee data	Details
+3	/create	POST	JSON	http://dummy.restapiexample.com/api/v1/create	Create new record in database	Details
+4	/update/{id}	PUT	JSON	http://dummy.restapiexample.com/api/v1/update/21	Update an employee record	Details
+5	/delete/{id}	DELETE	JSON	http://dummy.restapiexample.com/api/v1/delete/2	Delete an employee record	Details
+
+ 1.  use CMD(windows)
+ 2.  G:\>	curl -v http://dummy.restapiexample.com/api/v1/employee/1
+*   Trying 3.6.118.31...
+* TCP_NODELAY set
+* Connected to dummy.restapiexample.com (3.6.118.31) port 80 (#0)
+> GET /api/v1/employee/1 HTTP/1.1
+> Host: dummy.restapiexample.com
+> User-Agent: curl/7.55.1
+> Accept: */*
+< HTTP/1.1 200 OK
+< Cache-Control: no-cache, private, max-age=31536000
+< Content-Type: application/json
+< Date: Tue, 15 Sep 2020 06:07:08 GMT
+< Display: staticcontent_sol
+< Expires: Wed, 15 Sep 2021 06:07:07 GMT
+< Host-Header: c2hhcmVkLmJsdWVob3N0LmNvbQ==
+< Referrer-Policy:
+< Response: 200
+< Server: nginx/1.16.0
+< Vary: Accept-Encoding
+< Vary: Accept-Encoding,User-Agent,Origin
+< X-Ezoic-Cdn: Miss
+< X-Middleton-Display: staticcontent_sol
+< X-Middleton-Response: 200
+< X-Ratelimit-Limit: 60
+< X-Ratelimit-Remaining: 58
+< X-Sol: pub_site
+< Content-Length: 179
+<
+{"status":"success","data":{"id":1,"employee_name":"Tiger Nixon","employee_salary":320800,"employee_age":61,"profile_image":""},"message":"Successfully! Record has been fetched."}* Connection #0 to host dummy.restapiexample.com left intact
+
+
+Auto encoding Secrets with stringData .Manually encoding secrets with base64 encoding .Creating Pods using the secret and verify the Secret is mounted to the file system
+of the container.
+Use hostPath volume mounts to mount a file or directory from the host node's filesystem to the Pod.
+
+https://www.capgemini.com/in-en/careers/diversity-and-inclusion/inclusive-hiring/submit-your-resume-now-for-diversity-hiring/?utm_source=india_career_section&utm_medium=india_website&utm_campaign=diversity_hiring
+
+To Update the image .You can run kubectl rollout status <deployment name> to check status of rollout.
+$ kubectl set image deployment <deplyoment name> <container-name>=nginx:1.9.1 --record
+
+ ---------------------------------------------- DOCKER HANDS ON --------------------------------
+ 
+ Docker Commands - Container
+Now lets run list of commands on the service/ container
+
+List running containers
+
+docker ps
+Know the IP address of the running container:
+
+docker inspect <Container Name> 
+e.g. docker inspect nginxservice
+Print the stats for a running Container
+
+docker stats <<Container Name>> ↵
+e.g. docker stats nginxservice
+Pause the processes in a running container
+
+docker pause <<Container Name >> ↵
+e.g. docker pause nginxservice
+Unpause the processes in a running container
+
+docker unpause <<Container Name >> ↵
+e.g. docker unpause nginxservice
+
+Docker Commands - Container (Contd 1...)
+Kill the processes in a running container
+
+docker kill <<Container Name >> ↵
+e.g. docker kill nginxservice
+Start the same container:
+
+docker start <<Container Name>> ↵
+e.g. docker start nginxservice
+Stop the running container
+
+docker stop <<Container Name >> ↵
+e.g. docker stop nginxservice
+List all containers (This includes containers in a all states):
+
+We will be able to see the container we just stopped listed here.
+
+docker ps -a 
+Delete a container:
+
+docker rm <<Container Name >> ↵
+e.g. docker rm nginxservice
+To remove all stopped containers:
+
+docker container prune 
+Note: Instead of using the Container Name, all the above commands can be executed with the container id as well.
+
+Docker Commands - Container (Contd 2...)
+Export a container
+
+docker export <<Container Name>> <<file_Name>>.tar ↵
+e.g. 
+Lets run a service using docker run command.
+docker run --name newnginxservice -d nginx
+docker export newnginxservice > test.tar
+Import a container
+
+docker import <<Remote URL/Image Name.tar>>  ↵
+e.g. docker import test.tar
+
+No conatiner running:
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS  PORTS               NAMES
+
+## No "nginx" image.
+
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+redis               latest              4760dc956b2d        2 years ago         107MB
+ubuntu              latest              f975c5035748        2 years ago         112MB
+alpine              latest              3fd9065eaf02        2 years ago         4.14MB
+
+$ docker version
+Client:
+ Version:      17.09.0-ce
+ API version:  1.32
+ Go version:   go1.8.3
+ Git commit:   afdb6d4
+ Built:        Tue Sep 26 22:39:28 2017
+ OS/Arch:      linux/amd64
+
+Server:
+ Version:      18.03.0-ce
+ API version:  1.37 (minimum version 1.12)
+ Go version:   go1.10
+ Git commit:   0520e24302
+ Built:        Fri Mar 23 01:48:12 2018
+ OS/Arch:      linux/amd64
+ Experimental: false
+$ docker info
+Containers: 0
+ Running: 0
+ Paused: 0
+ Stopped: 0
+Images: 3
+Server Version: 18.03.0-ce
+Storage Driver: overlay
+ Backing Filesystem: extfs
+ Supports d_type: true
+Logging Driver: json-file
+Cgroup Driver: cgroupfs
+Plugins:
+ Volume: local
+ Network: bridge host macvlan null overlay
+ Log: awslogs fluentd gcplogs gelf journald json-file logentries splunk syslog
+Swarm: inactive
+Runtimes: runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version: cfd04396dc68220d1cecbe686a6cc3aa5ce3667c
+runc version: 4fc53a81fb7c994640722ac585fa9ca548971871
+init version: 949e6fa
+
+$ pwd
+/home/scrapbook/tutorial
+
+$ docker pull nginx
+Using default tag: latest
+latest: Pulling from library/nginx
+d121f8d1c412: Pull complete
+ebd81fc8c071: Pull complete
+655316c160af: Pull complete
+d15953c0e0f8: Pull complete
+2ee525c5c3cc: Pull complete
+Digest: sha256:c628b67d21744fce822d22fdcc0389f6bd763daac23a6b77147d0712ea7102d0
+Status: Downloaded newer image for nginx:latest
+
+##Nginx image pulled
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+nginx               latest              7e4d58f0e5f3        6 days ago          133MB
+redis               latest              4760dc956b2d        2 years ago         107MB
+ubuntu              latest              f975c5035748        2 years ago         112MB
+alpine              latest              3fd9065eaf02        2 years ago         4.14MB
+
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS  PORTS               NAMES
+
+Create a container:
+$ docker run --publish 8000:8080 --detach --name <<my_new_container_name>> <existing_image_name:tag>>
+ 
+$ docker run --publish 8000:8080 --detach --name nginx nginx:latest
+97cf0e4d1e0c36e4cfdd6df0a07b5725a968b510791ff12e7abe47c2c8e39481
+
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS       				PORTS                            NAMES
+97cf0e4d1e0c        nginx:latest        "/docker-entrypoin..."   8 seconds ago       Up 5 seconds       80/tcp, 0.0.0.0:8000->8080/tcp   		 nginx
+
+There are a couple of common flags here:
+--publish asks Docker to forward traffic incoming on the host’s port 8000 to the container’s port 8080. Containers have their own private set of ports, so if you want to reach one from the network, you have to forward traffic to it in this way. Otherwise, firewall rules will prevent all network traffic from reaching your container, as a default security posture.
+--detach asks Docker to run this container in the background.
+--name specifies a name with which you can refer to your container in subsequent commands, in this case bb.
+
+tag a docker images:
+Usage:  docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
+
+Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+$ docker tag redis redis:v1
+
+Find a free port:
+netstat -aln | awk '
+  $6 == "LISTEN" {
+    if ($4 ~ "[.:][0-9]+$") {
+      split($4, a, /[:.]/);
+      port = a[length(a)];
+      p[port] = 1
+    }
+  }
+  END {
+    for (i = 3000; i < 65000 && p[i]; i++){};
+    if (i == 65000) {exit 1};
+    print i
+  }
+
+$ docker run --publish 8000:8080 --detach --name redis_container redis:latest
+c627e5642b22e4dac86b8e3c4fd5c1ce351f9f7dace7fb7b2e714921119e2bef
+
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS
+       PORTS                              NAMESc627e5642b22        redis:latest        "docker-entrypoint..."   6 seconds ago       Up 3 seconds
+       6379/tcp, 0.0.0.0:8000->8080/tcp   redis_container
+
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS
+       PORTS                              NAMES
+c627e5642b22        redis:latest        "docker-entrypoint..."   6 minutes ago       Up 6 minutes
+       6379/tcp, 0.0.0.0:8000->8080/tcp   redis_container
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+tomcat              latest              f796d3d2c195        41 hours ago        647MB
+tomee               latest              261427ebb1c6        6 days ago          335MB
+redis               latest              84c5f6e03bf0        6 days ago          104MB
+redis               v1                  84c5f6e03bf0        6 days ago          104MB
+redis               <none>              4760dc956b2d        2 years ago         107MB
+ubuntu              latest              f975c5035748        2 years ago         112MB
+alpine              latest              3fd9065eaf02        2 years ago         4.14MB
+
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS
+       PORTS                              NAMES
+c627e5642b22        redis:latest        "docker-entrypoint..."   8 minutes ago       Up 8 minutes       6379/tcp, 0.0.0.0:8000->8080/tcp   redis_container
+
+$ docker run --publish 8001:8081 --detach --name tomee_container tomee:latest
+5cdce0c1f49e15f14e511238438c62ccf21d887d79a07f0563aa31a6b343b02c
+
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+tomcat              latest              f796d3d2c195        41 hours ago        647MB
+tomee               latest              261427ebb1c6        6 days ago          335MB
+redis               latest              84c5f6e03bf0        6 days ago          104MBredis               v1                  84c5f6e03bf0        6 days ago          104MB
+redis               <none>              4760dc956b2d        2 years ago         107MBubuntu              latest              f975c5035748        2 years ago         112MB
+alpine              latest              3fd9065eaf02        2 years ago         4.14MB
+$
+$ docker run --publish 8002:8082 --detach --name tomcat_container tomcat:latest
+bdfba4c699dea837b9eb34e5b825bf4cc3d47d451772b15b32e3ab60a9114e71
+
+To run the tomcat image, type the below command:
+$ docker run --name tomcatRunner -p 8080:80 -d tomcatimage
+tomcatRunner - container name
+8080 - port of host machine
+80 - port of container
+-d - Run the daemon process in the background
+
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS        PORTS                              NAMES
+bdfba4c699de        tomcat:latest       "catalina.sh run"        5 seconds ago        Up 3 seconds        8080/tcp, 0.0.0.0:8002->8082/tcp   tomcat_container
+5cdce0c1f49e        tomee:latest        "catalina.sh run"        About a minute ago   Up About a minute   8080/tcp, 0.0.0.0:8001->8081/tcp   tomee_container
+c627e5642b22        redis:latest        "docker-entrypoint..."   10 minutes ago       Up 10 minutes       6379/tcp, 0.0.0.0:8000->8080/tcp   redis_container
+
+Create a Docker image--------------------- UBUNTU --------------
+
+1. Create a docker file  
+Step 1 - Create a Dockerfile
+Create a new directory DockerExample
+mkdir DockerExample.
+
+Move the newly created directory
+
+cd DockerExample.
+
+Add a file named Dockerfile
+
+vi Dockerfile.
+
+FROM tomcat:jre8-alpine
+# For wget to work
+RUN   apk update \                                                                                                                                                                                                                        
+&&   apk add ca-certificates wget \                                                                                                                                                                                                      
+&&   update-ca-certificates 
+# Copy tomcat server.xml
+WORKDIR /usr/local/tomcat
+# Start tomcat
+CMD ["catalina.sh", "run"]
+
+
+Step 2 - Build a Docker Image
+Build a docker image using below command.
+
+All the four steps in the docker file will be executed one by one. You will see a message Successfully Built "Image Id".
+docker build -t tomcatimage .
+
+-t --> Tags the name 'tomcatimage' to the newly created image.
+Note: Do not forget to add a '.' dot at the end of the build command.
+You can run the below command to view the complete details of the image.
+
+docker inspect tomcatimage
+
+Step 3 - Verify Image
+Verify the image retrieved by running command. This should list the newly created image.
+
+docker images
+
+Step 4 - Push to Registry
+Let us push the created image to Docker hub.
+
+Set up a Docker Hub account. Fill your profile details on the main Docker Hub website and click Sign Up. Activate your account from the email sent.
+Go back to Katacoda page and continue with the commands to push the image to docker hub.
+Login to docker hub using the below command
+
+docker login --username <username>
+
+key in the password once prompted.
+Command to tag the image with the repository image name
+
+docker tag tomcat01 <username>/tomcatimage
+
+Now let us push the image to the hub
+docker push <username>/tomcatimage
+
+Now the image 'tomcat01' is available in the docker hub.
+Step 5 - Pull from Registry
+Now lets learn to pull an image from the docker hub.
+
+Open a new Katacoda session and type the following command.
+Login to docker hub using the same docker login command
+Type the below command to pull the added image
+
+docker pull <username>/tomcatimage
+
+Verify if the image is available by running docker command
+docker images
+
+Step 6 - Run Image
+To run the tomcat image, type the below command
+
+docker run --name tomcatRunner -p 8080:80 -d tomcatimage
+
+tomcatRunner - container name
+8080 - port of host machine
+80 - port of container
+-d - Run the daemon process in the background
+
+before,should be inside dir containing docker file--------
+
+$ pwd
+/home/scrapbook/tutorial/DockerExample
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+redis               latest              4760dc956b2d        2 years ago         107MB
+ubuntu              latest              f975c5035748        2 years ago         112MB
+alpine              latest              3fd9065eaf02        2 years ago         4.14MB
+
+Build the image:--------------------
+
+$ docker build -t myimg:v1 .
+Sending build context to Docker daemon   2.56kB
+Step 1/4 : FROM tomcat:jre8-alpine
+jre8-alpine: Pulling from library/tomcat
+e7c96db7181b: Pull complete
+f910a506b6cb: Pull complete
+b6abafe80f63: Pull complete
+d8c966ddef98: Pull complete
+07e652475ee6: Pull complete
+c42103cfa50f: Pull complete
+Digest: sha256:04feaf74f8bb54b43ea136b150bbc7b58e8a3062aead67ab871f2dbbd5dac5d1
+Status: Downloaded newer image for tomcat:jre8-alpine
+ ---> 8b8b1eb786b5
+Step 2/4 : RUN apk update && apk add ca-certificates wget && update-ca-certificates
+ ---> Running in 8d6cca565c4f
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.9/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.9/community/x86_64/APKINDEX.tar.gz
+v3.9.6-74-ga64f4053b3 [http://dl-cdn.alpinelinux.org/alpine/v3.9/main]
+v3.9.6-68-gb2b6f289a8 [http://dl-cdn.alpinelinux.org/alpine/v3.9/community]
+OK: 9790 distinct packages available
+(1/1) Installing wget (1.20.3-r0)
+Executing busybox-1.29.3-r10.trigger
+OK: 94 MiB in 62 packages
+WARNING: ca-certificates.crt does not contain exactly one certificate or CRL: skipping
+Removing intermediate container 8d6cca565c4f
+ ---> 1df2a2e1b8c7
+Step 3/4 : WORKDIR /usr/local/tomcat
+Removing intermediate container 805aadea9cc4
+ ---> 5d8f806c9954
+Step 4/4 : CMD ["catalina.sh", "run"]
+ ---> Running in 1f039f53504d
+Removing intermediate container 1f039f53504d
+ ---> be46fe27428d
+Successfully built be46fe27428d
+Successfully tagged myimg:v1
+
+Both the base image- 8b8b1eb786b5 and appimage - be46fe27428d are present.
+
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+myimg               v1                  be46fe27428d        5 seconds ago       109MB
+tomcat              jre8-alpine         8b8b1eb786b5        16 months ago       106MB
+redis               latest              4760dc956b2d        2 years ago         107MB
+ubuntu              latest              f975c5035748        2 years ago         112MB
+alpine              latest              3fd9065eaf02        2 years ago         4.14MB
+
+PUSH IMAGE -----------------------
+
+https://hub.docker.com/repository/docker/akashk1297/test_repo
+
+$ docker login --username akashk1297
+Password:
+Login Succeeded
+
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+tomcatimage         latest              be46fe27428d        12 minutes ago      109MB
+myimg               v1                  be46fe27428d        12 minutes ago      109MB
+tomcat              jre8-alpine         8b8b1eb786b5        16 months ago       106MB
+redis               latest              4760dc956b2d        2 years ago         107MB
+ubuntu              latest              f975c5035748        2 years ago         112MB
+alpine              latest              3fd9065eaf02        2 years ago         4.14MB
+
+Change the image repo name to new name 
+$ docker tag tomcatimage akashk1297/test_repo
+$ docker images
+REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
+akashk1297/test_repo   latest              be46fe27428d        13 minutes ago      109MB
+myimg                  v1                  be46fe27428d        13 minutes ago      109MB
+tomcatimage            latest              be46fe27428d        13 minutes ago      109MB
+tomcat                 jre8-alpine         8b8b1eb786b5        16 months ago       106MB
+redis                  latest              4760dc956b2d        2 years ago         107MB
+ubuntu                 latest              f975c5035748        2 years ago         112MB
+alpine                 latest              3fd9065eaf02        2 years ago         4.14MB
+$ docker push akashk1297/test_repo
+The push refers to repository [docker.io/akashk1297/test_repo]
+c1a5283959e8: Pushed
+aac21c2169ae: Mounted from library/tomcat
+8e0feedfd296: Mounted from library/tomcat
+48988bb7b861: Mounted from library/tomcat
+edd61588d126: Mounted from library/tomcat
+9b9b7f3d56a0: Mounted from library/tomcat
+f1b5933fe4b5: Mounted from library/tomcat
+latest: digest: sha256:8615f6d0bf27bd779b2818430d4d848f57436393ac1ef63069c5099501aed8c5 size: 1785
+
+
+
+--------------------------------------------------------------------- JENKINS-------------------------------------------------------
+Jenkins Plugins Index provides you the various plugin options such as:
+
+Source Control: Git, SVN, Mercurial
+Testing : Selenium, Windmill
+Triggers: Jabber, Directory watchers
+Artifact: To copy components between projects like Amazon S3, SCP
+
+Plugins in Jenkins Contd.
+Code Analysis: To parse the code with tools like CheckStyle,Findbugs,PMD
+Build Tools: In large projects use a build manager such as Maven or Ant.
+Reporting: Jenkins provides its own reports. It can be extended using tools like Static Analysis Collector that collects the different analysis results and shows it in a combined trend graph.
+Plugins can be configured via the Manage Plugins under Manage Jenkins
